@@ -7,7 +7,8 @@ from . import models
 
 
 def HomePageView(request):
-    pass
+
+    return render(request, 'index.html')
 
 
 # Create your views here.

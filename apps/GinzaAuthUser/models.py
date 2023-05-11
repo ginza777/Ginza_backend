@@ -37,7 +37,7 @@ class CustomUser(AbstractUser):
 
     class Meta:
         verbose_name_plural = 'CustomUser'
-        db_table = 'authapp_customuser'
+        db_table = 'GinzaAuthUser_customuser'
 
     def __str__(self):
         return self.username
