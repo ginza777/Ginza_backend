@@ -17,14 +17,12 @@ class CustomUserRegister(CreateAPIView):
     serializer_class = serializers.CustomUserSerializer
     # serializer_class = serializers.UserSerializer
     queryset = models.CustomUser.objects.all()
-    permission_classes = [AllowAny]
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
 
 class DeleteUser(APIView):
-
     serializer_class = serializers.CustomUserSerializerDelete
     queryset = models.CustomUser.objects.all()
     permission_classes = [IsAuthenticated]
@@ -54,18 +52,14 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         # Add custom claims
         token['username'] = user.username
         token['email'] = user.email
-        token['first_name'] = user.first_name
-        token['last_name'] = user.last_name
 
-        # ...
         return token
+
+
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
-
 
 
 class CustomAuthToken(TokenObtainPairView):
     queryset = models.CustomUser.objects.all()
     serializers_class = serializers.CustomUserSerializerLogin
-
-

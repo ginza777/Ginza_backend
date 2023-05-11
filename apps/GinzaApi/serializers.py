@@ -4,7 +4,6 @@ from . import models
 
 class CourseSerializer(serializers.ModelSerializer):
     teacher_name = serializers.CharField(source='teacher.name', read_only=True)
-
     class Meta:
         model = models.Course
         fields = [
@@ -21,14 +20,13 @@ class CourseSerializer(serializers.ModelSerializer):
         ]
 
     video_count = serializers.SerializerMethodField()
-
     def get_video_count(self, obj):
         return models.Videos.objects.filter(course_id=obj.id).count()
 
 
 
 class VideosSerializer(serializers.ModelSerializer):
-    # link = ModifiedLinkField(max_length=300)
+
     class Meta:
         model = models.Videos
         fields = [

@@ -38,5 +38,6 @@ class Videos(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, blank=True, null=True)
     link = models.CharField(max_length=500)
 
+
     def __str__(self):
-        return self.title
+        return self.course.name
