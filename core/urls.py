@@ -10,7 +10,7 @@ urlpatterns = [
     path("", HomePageView, name="home"),
     path("", include("apps.GinzaApi.urls")),
     path("", include("apps.GinzaAuthUser.urls")),
-    path("", include("apps.DjangoFilterBackend.urls")),
+
 
 ]
 

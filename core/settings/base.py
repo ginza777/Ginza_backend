@@ -30,7 +30,10 @@ SECRET_KEY = env.str("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG")
 
-ALLOWED_HOSTS = ["*"]
+
+
+ALLOWED_HOSTS = [env.str('ALLOWED_HOSTS')]
+
 
 # Application definition
 DJANGO_APPS = [
@@ -47,7 +50,6 @@ DJANGO_APPS = [
 CUSTOM_APPS = [
     "apps.GinzaAuthUser",
     "apps.GinzaApi",
-    "apps.DjangoFilterBackend",
 ]
 
 THIRD_PARTY_APPS = [
@@ -84,7 +86,7 @@ REST_FRAMEWORK = {
 
 INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS + THIRD_PARTY_APPS
 
-CORS_ALLOW_METHODS = ["*"]
+CORS_ALLOW_METHODS =  [env.str('ALLOWED_HOSTS')]
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
 
